@@ -57,7 +57,9 @@
         </thead>
         <tbody ng-repeat="row in data | slice:panel.offset:panel.offset+panel.size" ng-class-odd="'odd'">
           <tr ng-click="toggle_details(row)" class="pointer">
-            <td ng-repeat="field in panel.fields" ng-bind-html-unsafe="(row.highlight[field]||row._source[field]) | highlight"></td>
+            <td ng-repeat="field in panel.fields" my-current-time>
+                {{row._source[field] | timestamp | highlight}}
+            </td>
           </tr>
           <tr ng-show="row.kibana.details">
             <td colspan=1000>

@@ -262,4 +262,17 @@ angular.module('kibana.table', [])
     }
     return '';
   };
+})
+.filter('timestamp', function() {
+    return function(input) {
+        var timestamp = Date.parse(input);
+
+        if (isNaN(timestamp) == false) {
+            var d = new Date(timestamp);
+            var formattedDate = d.toLocaleString();
+            return formattedDate;
+        } else {
+            return input;
+        }
+    }
 });
